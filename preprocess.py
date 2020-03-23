@@ -12,7 +12,11 @@ from psgeom.radavg import Averager
 parser = argparse.ArgumentParser()
 parser.add_argument('-r', '--run', type=int, required=True,
                     help='the run number to preprocess')
+parser.add_argument('-o', '--onecolor', action='store_true',
+                    default=False)
 args = parser.parse_args()
+
+print('PROCESSING RUN %d (onecolor=%s)' % (args.run, str(args.onecolor)))
 
 
 dsource   = psana.MPIDataSource('exp=cxig0715:run=%d:smd' % args.run)
@@ -30,8 +34,12 @@ q_xyz = np.array(f['q_xyz_reshaped'])
 q_mag = np.sqrt( np.sum( np.power(q_xyz, 2), axis=-1 ) )
 f.close()
 
-ds2_mask = np.load('geometry/minimal_mask_psanashp.npy')
+evt = dsource.events().next()
+ds2_mask = cspad_det.mask(evt, calib=False, status=True, edges=True, central=True, unbondnbrs=True)
+
 radavg = Averager(q_mag, ds2_mask, n_bins=500)
+
+gain_map = np.fromfile('geometry/gain-center.cal', dtype=np.float32).reshape(32,185,388)
 
 
 # --- xtcav
@@ -40,6 +48,7 @@ XTCAV = LasingOnCharacterization(num_bunches=2)
 
 
 # >>> event loop
+print('starting analysis...')
 for nevt, evt in enumerate(dsource.events()):
 
     # we'll only save events with a full set of interesting data
@@ -53,24 +62,28 @@ for nevt, evt in enumerate(dsource.events()):
     # ---------------------------------------------------------------
     # get the CSPAD, radially integrate it
 
-    calib = cspad_det.calib(evt) # .image = 2d corrected image
-    if calib is None:
+    raw = cspad_det.raw(evt)
+    if raw is None:
         save_evt = False
     else:
+        calib = (raw - cspad_det.pedestals(evt)) * gain_map
         Iq = radavg(calib)
-        Iq[342:] = Iq[342:] / 2.8 # gain map TODO fix this
 
         # hitfind (gets both xtals and soln)
-        if Iq.mean(0) < 2.0:
+        if calib.mean() < 10.0:
             save_evt = False
 
 
     # ---------------------------------------------------------------
     # get the XTCAV data and compute the inter-pulse separation
-    XTCAV.processEvent(evt)
-    xray_delays = XTCAV.pulseDelay()
-    if xray_delays is None:
-        save_evt = False
+
+    if args.onecolor:
+        xray_delays = -1.0
+    else:
+        XTCAV.processEvent(evt)
+        xray_delays = XTCAV.pulseDelay()
+        if xray_delays is None:
+            save_evt = False
 
     # ---------------------------------------------------------------
     # FEE spectrometer
@@ -85,19 +98,26 @@ for nevt, evt in enumerate(dsource.events()):
         trace = trace - np.median(trace)
         trace[trace < 0.0] = 0.0
 
-        pump_position = np.average(np.arange(1000), weights=trace[:1000])
-        pump_mag = np.sum(trace[:1000])
+        if args.onecolor:
+            probe_position = np.average(np.arange(2000), weights=trace[:2000])
+            probe_mag = np.sum(trace[:])
+            pump_position = 0.0
+            pump_mag = 0.0
 
-        probe_position = np.average(np.arange(1000)+1000, weights=trace[1000:2000])
-        probe_mag = np.sum(trace[1000:2000])
+        else: # two color
+            pump_position = np.average(np.arange(1000), weights=trace[:1000])
+            pump_mag = np.sum(trace[:1000])
 
-        # if we have bad overlap, simply reject the shot
-        if pump_position > 750:
-            print 'Pump position too close to Fe edge (%f)' % pump_position
-            save_evt = False
-        if probe_position < 1250:
-            print 'Probe position too close to Fe edge (%f)' % probe_position
-            save_evt = False
+            probe_position = np.average(np.arange(1000)+1000, weights=trace[1000:2000])
+            probe_mag = np.sum(trace[1000:2000])
+
+            # if we have bad overlap, simply reject the shot
+            if pump_position > 750:
+                print 'Pump position too close to Fe edge (%f)' % pump_position
+                save_evt = False
+            if probe_position < 1250:
+                print 'Probe position too close to Fe edge (%f)' % probe_position
+                save_evt = False
 
     if save_evt == True:
         smldata.event(radial_profile=Iq,
