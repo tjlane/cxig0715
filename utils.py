@@ -21,7 +21,7 @@ def load_runs(runs_to_analyze, one_color=False,
     pump_energy    = []
     pump_mag       = []
     radial_profile = []
-    
+    gdet_mJ        = []
 
     for run in runs_to_analyze:
 
@@ -37,6 +37,8 @@ def load_runs(runs_to_analyze, one_color=False,
                 pump_energy.append( np.array(f['pump_energy']) )
                 pump_mag.append( np.array(f['pump_mag']) )
                 radial_profile.append( np.array(f['radial_profile']) )
+                gdet_mJ.append( np.array(f['gas_detector/f_11_ENRC']) +\
+                                np.array(f['gas_detector/f_12_ENRC']) / 2.0 )
 
                 if one_color:
                     pp_delay.append( -1 * np.ones(f['pulse_time'].shape[0]) )
@@ -61,6 +63,7 @@ def load_runs(runs_to_analyze, one_color=False,
                  'pump_energy'    : np.concatenate(pump_energy),
                  'pump_mag'       : np.concatenate(pump_mag),
                  'radial_profile' : np.concatenate(radial_profile),
+                 'gdet_mJ'        : np.concatenate(gdet_mJ),
                  'radial_profile_qvalues' : radial_profile_qvalues}
 
     if verbose == True:
