@@ -1,0 +1,9 @@
+ion*: average ionization degree of oxygen
+first column: time[fs], 0fs = center of the pump pulse
+second column: average ionization degree [-]
+
+csp*: charge state population
+first column: time[fs], 0fs = center of the pump pulse
+columns 2 and higher give relative populations (0 to 1) of ionization stages of oxygen (neutral,1+,..)
+
+note: figures do not show all columns that are included in data files.
