@@ -1,0 +1,5 @@
+first column: q[1/meter]
+second column: scattered intensity, [arbitrary units] but normalized always the same - 
+   per incident probe photon and per scattering particle in the cell.
+   This is because the number of scattering particles in cells of different sizes differ.
+
