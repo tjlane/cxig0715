@@ -1,0 +1,7 @@
+plaspar_<fluence%>.txt :  
+
+1st column: time [fs] time = 0 fs at the pump pulse center
+2nd column: electron concentration n_e [m^-3]
+3rd column: electron temperature T_e [eV]
+4th column: oxygen ion temperature T_i [eV]
+
