@@ -1,6 +1,7 @@
 .DS_Store
 *.png
 *.pdf
+*.h5
 geometry/
 
 # Byte-compiled / optimized / DLL files
