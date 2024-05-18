@@ -1,0 +1,19 @@
+
+NOTES on reviving old data processing
+
+  1. It seems that the old scratch/ spaces are gone. I hacked around this by using space in my home directory for the time being.
+
+  2. The following conda environment works, EXCEPT for the XTCAV code, which wants the cv2 library. So... you have to figure out how to install that.
+
+THESE COMMANDS BASICALLY WORK:
+
+  goconda
+  conda activate ana-409-tj
+  cd analysis/cxig0715/cxig0715/
+  mpirun -n 8 python preprocess.py -r 129 --onecolor
+
+Not attempted, but should be fine:
+
+  sbatch -p psanaq --nodes 1 --ntasks-per-node 8 --wrap="mpirun python preprocess.py -r 129"
+
+
