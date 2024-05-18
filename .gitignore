@@ -2,6 +2,7 @@
 *.png
 *.pdf
 *.h5
+*.npy
 geometry/
 
 # Byte-compiled / optimized / DLL files
