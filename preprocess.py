@@ -20,7 +20,7 @@ print('PROCESSING RUN %d (onecolor=%s)' % (args.run, str(args.onecolor)))
 
 
 dsource   = psana.MPIDataSource('exp=cxig0715:run=%d:smd' % args.run)
-smldata   = dsource.small_data('/reg/d/psdm/cxi/cxig0715/scratch/smalldata/run%d.h5' % args.run)
+smldata   = dsource.small_data('/cds/home/t/tjlane/analysis/cxig0715/scratch-smalldata/run%d.h5' % args.run)
 
 # --- spectrometer
 feespec   = psana.Detector('FEE-SPEC0')

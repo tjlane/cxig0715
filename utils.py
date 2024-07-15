@@ -9,7 +9,7 @@ def is_crystal(radial_profile, tv_threshold=75.0):
 
 
 def load_runs(runs_to_analyze, one_color=False, 
-              file_loc='/reg/d/psdm/cxi/cxig0715/scratch/smalldata/',
+              file_loc='/cds/home/t/tjlane/analysis/cxig0715/scratch-smalldata/',
               verbose=True):
     """
     ugly but useful
@@ -41,7 +41,7 @@ def load_runs(runs_to_analyze, one_color=False,
                                 np.array(f['gas_detector/f_12_ENRC']) / 2.0 )
 
                 if one_color:
-                    pp_delay.append( -1 * np.ones(f['pulse_time'].shape[0]) )
+                    pp_delay.append( -1 * np.ones(f['probe_energy'].shape[0]) )
                 else:
                     pulse_times = np.array(f['pulse_time'])
                     pp_delay.append( np.abs(pulse_times[:,0] - pulse_times[:,1]) )
