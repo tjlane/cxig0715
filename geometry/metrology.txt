@@ -1,0 +1,68 @@
+# TITLE      Geometry parameters of CSPAD
+# DATE_TIME  2015-02-03 13:57:08 PST
+# METROLOGY  ./work/metrology.txt
+# AUTHOR     dubrovin
+# EXPERIMENT CXI
+# DETECTOR   CSPAD
+# CALIB_TYPE geometry
+# COMMENT:01 Table contains the list of geometry parameters for alignment of 2x1 sensors, quads, CSPAD, etc
+# COMMENT:02 All translation and rotation pars of the object are defined w.r.t. parent object Cartesian frame
+# PARAM:01 PARENT     - name and version of the parent object
+# PARAM:02 PARENT_IND - index of the parent object
+# PARAM:03 OBJECT     - name and version of the object
+# PARAM:04 OBJECT_IND - index of the new object
+# PARAM:05 X0         - x-coordinate [um] of the object origin in the parent frame
+# PARAM:06 Y0         - y-coordinate [um] of the object origin in the parent frame
+# PARAM:07 Z0         - z-coordinate [um] of the object origin in the parent frame
+# PARAM:08 ROT_Z      - object design rotation angle [deg] around Z axis of the parent frame
+# PARAM:09 ROT_Y      - object design rotation angle [deg] around Y axis of the parent frame
+# PARAM:10 ROT_X      - object design rotation angle [deg] around X axis of the parent frame
+# PARAM:11 TILT_Z     - object tilt angle [deg] around Z axis of the parent frame
+# PARAM:12 TILT_Y     - object tilt angle [deg] around Y axis of the parent frame
+# PARAM:13 TILT_X     - object tilt angle [deg] around X axis of the parent frame
+
+# HDR PARENT IND        OBJECT IND     X0[um]   Y0[um]   Z0[um]   ROT-Z ROT-Y ROT-X     TILT-Z   TILT-Y   TILT-X
+
+QUAD:V1        0  SENS2X1:V1     0      21736    32910        0       0     0     0    0.15393  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     1      21764    10525        0       0     0     0    0.08944  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     2      33135    68357        0     270     0     0    0.07829  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     3      10548    68345        0     270     0     0    0.05061  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     4      68567    56864        0     180     0     0   -0.07434  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     5      68641    79593        0     180     0     0   -0.17300  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     6      77801    21584        0     270     0     0   -0.07237  0.00000  0.00000 
+QUAD:V1        0  SENS2X1:V1     7      54887    21619        0     270     0     0   -0.01447  0.00000  0.00000 
+
+QUAD:V1        1  SENS2X1:V1     0      21796    33393       69       0     0     0   -0.19595  0.29458 -0.12311 
+QUAD:V1        1  SENS2X1:V1     1      21763    10496      -53       0     0     0    0.05920  0.13813 -0.11487 
+QUAD:V1        1  SENS2X1:V1     2      33311    68498      -35     270     0     0    0.08616  0.49826  0.29991 
+QUAD:V1        1  SENS2X1:V1     3      10488    68326       12     270     0     0    0.15057 -0.02190  0.07101 
+QUAD:V1        1  SENS2X1:V1     4      68577    56906       30     180     0     0    0.04867 -0.21575  0.30402 
+QUAD:V1        1  SENS2X1:V1     5      68533    79420       54     180     0     0    0.06773 -0.18939  0.08214 
+QUAD:V1        1  SENS2X1:V1     6      77306    21384     -179     270     0     0    0.12166  0.36970  0.09601 
+QUAD:V1        1  SENS2X1:V1     7      54801    21366       33     270     0     0   -0.10655 -0.11226 -0.14602 
+
+QUAD:V1        2  SENS2X1:V1     0      21762    33294        0       0     0     0    0.11371  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     1      21805    10433        0       0     0     0   -0.13548  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     2      33267    68360        0     270     0     0   -0.01447  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     3      10584    68343        0     270     0     0   -0.06908  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     4      68488    57005        0     180     0     0   -0.05263  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     5      68432    79403        0     180     0     0    0.11709  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     6      77293    21711        0     270     0     0    0.08747  0.00000  0.00000 
+QUAD:V1        2  SENS2X1:V1     7      54717    21678        0     270     0     0   -0.05798  0.00000  0.00000 
+
+QUAD:V1        3  SENS2X1:V1     0      21671    32898       80       0     0     0    0.13878 -0.11313  0.10106 
+QUAD:V1        3  SENS2X1:V1     1      21763    10453      -46       0     0     0    0.00132 -0.05920 -0.06578 
+QUAD:V1        3  SENS2X1:V1     2      33039    68572       16     270     0     0   -0.03486  0.06299 -0.03683 
+QUAD:V1        3  SENS2X1:V1     3      10418    68557       12     270     0     0   -0.18813  0.04108 -0.05394 
+QUAD:V1        3  SENS2X1:V1     4      68343    57213      -10     180     0     0    0.06644 -0.23288  0.41335 
+QUAD:V1        3  SENS2X1:V1     5      68304    79806       80     180     0     0    0.20918 -0.07762  0.15599 
+QUAD:V1        3  SENS2X1:V1     6      77911    21808       44     270     0     0   -0.19605  0.05206 -0.09474 
+QUAD:V1        3  SENS2X1:V1     7      54550    21911       41     270     0     0   -0.10065  0.00274 -0.07105 
+
+CSPAD:V1       0  QUAD:V1        0      -4500    -4500        0      90     0     0    0.00000  0.00000  0.00000 
+CSPAD:V1       0  QUAD:V1        1      -4500     4500        0       0     0     0    0.00000  0.00000  0.00000 
+CSPAD:V1       0  QUAD:V1        2       4500     4500        0     270     0     0    0.00000  0.00000  0.00000 
+CSPAD:V1       0  QUAD:V1        3       4500    -4500        0     180     0     0    0.00000  0.00000  0.00000 
+
+RAIL           0  CSPAD:V1       0          0        0  1000000       0     0     0    0.00000  0.00000  0.00000 
+IP             0  RAIL           0          0        0        0       0     0     0    0.00000  0.00000  0.00000 
