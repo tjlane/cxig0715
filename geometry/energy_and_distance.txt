@@ -1,0 +1,40 @@
+
+ENERGY
+
+This was a 2-color experiment.
+
+From eLog:
+Photon beam energy 	7129.8432 	SIOC:SYS0:ML00:AO541
+Photon beam energy 	7121.8231 	SIOC:SYS0:ML00:AO627
+
+From Sebastien:
+~25 eV above the iron edge for the pump and 25 eV below the iron edge for the
+probe.
+
+From http://skuld.bmsc.washington.edu/scatter/AS_periodic.html
+
+  Element 26: Fe      Atomic mass:   55.8470
+
+  Edge          keV         A
+    K         7.1120    1.7433
+
+
+------------------------------------------------------------
+
+DISTANCE
+
+
+From eLog posts by tbarends:
+
+lysozyme detector calibration results.
+We are using the same detector we had for cxid6014 (myoglobin.CO) in the summer. Starting from that geometry and the powder made
+by Lutz, shifted the quadrants to approximately the right position.
+Then scanned various detector distances. 94 mm seems more or less optimal and gives 20% indexing rate.
+
+Optimization with the geometry optimization code using 20,000 Bragg reflections then improves the indexing rate to >50%. 
+
+Will let it run and use the result for another iteration.
+Plots attached.
+
+detector encoder offset is 566.5 mm 
+
